@@ -10,7 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 
 public class Keywords {
@@ -24,8 +24,8 @@ public class Keywords {
 	public void openBrowser() throws Exception{
 		System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
 		System.out.println(System.getProperty("user.dir"));
-		driver = new FirefoxDriver();
-//		driver = new ChromeDriver();
+//		driver = new FirefoxDriver();
+		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().fullscreen();
 		file = new FileInputStream("objectRepo.properties");
