@@ -10,7 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 public class Keywords {
@@ -24,8 +24,8 @@ public class Keywords {
 	public void openBrowser() throws Exception{
 		System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
 		System.out.println(System.getProperty("user.dir"));
-//		driver = new FirefoxDriver();
-		driver = new ChromeDriver();
+		driver = new FirefoxDriver();
+//		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().fullscreen();
 		file = new FileInputStream("objectRepo.properties");
@@ -208,6 +208,32 @@ public class Keywords {
 				robot.keyRelease(KeyEvent.VK_DOWN);
 				Thread.sleep(500);
 			}
+		}else {
+			element.sendKeys(data);
+		}
+	}
+	public void auxPumpDropDown(String data, String objectName) throws Exception{
+		element = driver.findElement(By.xpath(props.getProperty(objectName)));
+		if(data.equals("Diafiltration 1")) {
+			element.click();
+			System.out.println("IN Case 1");
+			Thread.sleep(500);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			Thread.sleep(500);
+		}else if(data.equals("Diafiltration 2")) {
+			System.out.println("IN Case 2");
+			element.click();
+			Thread.sleep(500);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			Thread.sleep(500);
+		}else if(data.equals("Constant Feed")) {
+			System.out.println("IN Case 2");
+			element.click();
+			Thread.sleep(500);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			Thread.sleep(500);
 		}else {
 			element.sendKeys(data);
 		}
