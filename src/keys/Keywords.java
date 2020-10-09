@@ -28,7 +28,9 @@ public class Keywords {
 //		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.manage().window().fullscreen();
-		file = new FileInputStream("objectRepo.properties");
+//		file = new FileInputStream("objectRepo.properties");
+		file = new FileInputStream("objectFile.properties");
+//		file = new FileInputStream("d.properties");
 		props= new Properties();
 		props.load(file);
 	}
@@ -233,6 +235,7 @@ public class Keywords {
 			element.click();
 			Thread.sleep(500);
 			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
 			Thread.sleep(500);
 		}else {
 			element.sendKeys(data);
@@ -244,6 +247,34 @@ public class Keywords {
 		Thread.sleep(200);
 		element.sendKeys(data);
 		Thread.sleep(200);
+	}
+	
+	public void unitDropDown(String data, String objectName) throws Exception{
+		element = driver.findElement(By.xpath(props.getProperty(objectName)));
+		if(data.equals("per minute")) {
+			element.click();
+			System.out.println("IN Case 1");
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			Thread.sleep(500);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			Thread.sleep(1000);
+		}else if(data.equals("per second")) {
+			System.out.println("IN Case 2");
+			element.click();
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			Thread.sleep(500);
+			robot.keyPress(KeyEvent.VK_DOWN);
+			robot.keyRelease(KeyEvent.VK_DOWN);
+			Thread.sleep(500);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			Thread.sleep(500);
+			
+		}
+
 	}
 
 	public void filterDropDown(String data, String objectName) throws Exception{

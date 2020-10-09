@@ -75,6 +75,19 @@ public class DModeRecipeCreation {
 					key.dropDown(data, objectName);
 				}
 			}
+			if(a.get(i).equals("unitDropDown")) {
+				String keyword =(String) a.get(i);
+				String data = (String) a.get(i+1);
+				String objectName = (String) a.get(i+2);
+				String runmode = (String) a.get(i+3);
+				System.out.println(keyword);
+				System.out.println(data);
+				System.out.println(objectName);
+				System.out.println(runmode);
+				if(runmode.equals("yes")) {
+					key.unitDropDown(data, objectName);
+				}
+			}
 			if(a.get(i).equals("customBrowserWindow")) {
 				String keyword =(String) a.get(i);
 				String data = (String) a.get(i+1);

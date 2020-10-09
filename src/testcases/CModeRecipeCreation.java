@@ -21,6 +21,7 @@ public class CModeRecipeCreation {
 		FileInputStream file = new FileInputStream("recipeCreationTests.xlsx");
 		@SuppressWarnings("resource")
 		XSSFWorkbook workbook = new XSSFWorkbook(file);
+//		Sheet s = workbook.getSheet("Sheet1");
 		Sheet s = workbook.getSheet("cModeRecipeCreation");
 
 		@SuppressWarnings("rawtypes")
@@ -73,6 +74,19 @@ public class CModeRecipeCreation {
 				System.out.println(runmode);
 				if(runmode.equals("yes")) {
 					key.dropDown(data, objectName);
+				}
+			}
+			if(a.get(i).equals("unitDropDown")) {
+				String keyword =(String) a.get(i);
+				String data = (String) a.get(i+1);
+				String objectName = (String) a.get(i+2);
+				String runmode = (String) a.get(i+3);
+				System.out.println(keyword);
+				System.out.println(data);
+				System.out.println(objectName);
+				System.out.println(runmode);
+				if(runmode.equals("yes")) {
+					key.unitDropDown(data, objectName);
 				}
 			}
 			if(a.get(i).equals("customBrowserWindow")) {
